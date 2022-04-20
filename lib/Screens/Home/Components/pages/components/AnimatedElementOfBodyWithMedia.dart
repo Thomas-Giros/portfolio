@@ -1,128 +1,12 @@
+import 'package:video_player/video_player.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/styles/Styles.dart';
 import 'package:portfolio/languages/Languages.dart';
-import 'package:portfolio/colors/AppColors.dart';
-import 'package:video_player/video_player.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class WorkLayout extends StatelessWidget {
-  const WorkLayout({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ElementOfBody();
-  }
-}
-
-class ElementOfBody extends StatelessWidget {
-  const ElementOfBody({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TitleOfElementOfBody(title: Languages.presentation,),
-        PresentationElementOfBody(presentationText: Languages.presentationText,),
-        TitleOfElementOfBody(title: Languages.myProjects,),
-        ProjectsElementOfBody(
-          title: "Spim",
-          text: Languages.spimText,
-          sourceLink: 'https://play.google.com/store/apps/details?id=com.tgiros.spim',
-          sourceDescription: "Google Play",
-          mediaLocation: 'videos/spim_demo.mp4',
-          media: "video",
-        ),
-        TitleOfElementOfBody(title: Languages.otherProjects,),
-        ProjectsElementOfBody(
-          title: "The Random Face Generator",
-          text: Languages.RandomFaceText,
-          sourceLink: "https://adityar224.github.io/Random-Face-Generator/#/",
-          sourceDescription: "Source",
-          mediaLocation: "assets/images/random_face.png",
-          media: "image",
-        ),
-        ProjectsElementOfBody(
-          title: "AppPainter",
-          text: Languages.AppPainterText,
-          sourceLink: "https://appainter.dev/#/",
-          sourceDescription: "Source",
-          mediaLocation: "assets/images/app_painter.png",
-          media: "image",
-        ),
-        SizedBox(height: 110),
-      ],
-    );
-  }
-}
-
-
-class TitleOfElementOfBody extends StatelessWidget {
-   const TitleOfElementOfBody({
-    required  this.title,
-    Key? key
-  }) : super(key: key);
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(25,60,0,20),
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Text(
-          title.toUpperCase(),
-          style: AllTextStyles.TitleTextStyle(),
-        ),
-      ),
-    );
-  }
-}
-
-
-class PresentationElementOfBody extends StatelessWidget {
-  const PresentationElementOfBody({
-    required this.presentationText,
-    Key? key,
-  }) : super(key: key);
-  final String presentationText;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.fromLTRB(20,0,20,10),
-        decoration: BoxDecoration(
-          color: AppColors.prim.withOpacity(wideOpacity),
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-                offset: Offset(0,-2),
-                blurRadius: 30,
-                color: Colors.black.withOpacity(0.16)
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Flexible(
-                child: Text(
-                  presentationText,
-                  style: AllTextStyles.TextTextStyle(),
-                ),
-              ),
-            ],
-          ),
-      ),
-    );
-  }
-}
-
-
-class ProjectsElementOfBody extends StatefulWidget {
-  const ProjectsElementOfBody({
+class AnimatedElementOfBodyWithMedia extends StatefulWidget {
+  const AnimatedElementOfBodyWithMedia({
     Key? key,
     required this.title,
     required this.text,
@@ -141,10 +25,10 @@ class ProjectsElementOfBody extends StatefulWidget {
 
 
   @override
-  State<ProjectsElementOfBody> createState() => _ProjectsElementOfBodyState();
+  State<AnimatedElementOfBodyWithMedia> createState() => _AnimatedElementOfBodyWithMediaState();
 }
 
-class _ProjectsElementOfBodyState extends State<ProjectsElementOfBody> {
+class _AnimatedElementOfBodyWithMediaState extends State<AnimatedElementOfBodyWithMedia> {
   final double _paddingInset = 10;
   static const double _paddingRight = 20;
   static const double _paddingLeft = 20;
@@ -254,9 +138,9 @@ class _ProjectsElementOfBodyState extends State<ProjectsElementOfBody> {
         ),
       );
     } else
-      {
-        return Container();
-      }
+    {
+      return Container();
+    }
   }
 
   setDefaultSizeValues() {
@@ -300,10 +184,10 @@ class _ProjectsElementOfBodyState extends State<ProjectsElementOfBody> {
     {
       setState(() {
         if (media == "video")
-          {
-            _controller.setLooping(true);
-            _controller.play();
-          }
+        {
+          _controller.setLooping(true);
+          _controller.play();
+        }
         _text = widget.text;
         _borderRadiusTop = BorderRadius.only(
             topLeft: const Radius.circular(20.0),
@@ -331,10 +215,10 @@ class _ProjectsElementOfBodyState extends State<ProjectsElementOfBody> {
       setState(() {
         if (_text != widget.title)
         {
-            _borderRadiusTop = BorderRadius.only(
-                topLeft: const Radius.circular(20.0),
-                topRight: const Radius.circular(20.0));
-            setTextAndColor(widget.text,Colors.white.withOpacity(0.5));
+          _borderRadiusTop = BorderRadius.only(
+              topLeft: const Radius.circular(20.0),
+              topRight: const Radius.circular(20.0));
+          setTextAndColor(widget.text,Colors.white.withOpacity(0.5));
         }
       });
 

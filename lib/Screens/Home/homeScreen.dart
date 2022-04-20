@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Screens/Home/Components/AppBar.dart';
-import 'package:portfolio/Screens/Home/Components/WorkLayout.dart';
-import 'package:portfolio/Screens/Home/Components/AboutLayout.dart';
+import 'package:portfolio/Screens/Home/Components/pages/WorkLayout.dart';
+import 'package:portfolio/Screens/Home/Components/pages/AboutLayout.dart';
 import 'package:portfolio/languages/Languages.dart';
 import 'package:portfolio/Screens/Home/Components/Bottom.dart';
 import 'package:animated_background/animated_background.dart';
