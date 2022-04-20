@@ -1,8 +1,21 @@
-
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 
-class Languages{
+
+class Languages {
+
+  static double height = 100;
+
+  static var foo = <Function>[];
+
+  static void languageChanged(){
+    for( var i = 0 ; i < foo.length; i++ ) {
+      foo[i]() ;
+    }
+    //work = foo.length.toString();
+  }
+
+
   // App Bar
   static String language = "En";
   static String work = "Work";
@@ -18,7 +31,14 @@ class Languages{
 
   // Work - projects I like
   static String otherProjects = "";
-  static String otherProjectsText = "";
+  static String RandomFaceText = "";
+  static String AppPainterText = "";
+
+  // Bottom
+  static String sendEmail = "envoyer un courriel ";
+
+  static var strings = <String>[];
+
 
   static Future<String> loadAsset(String asset) async {
     return await rootBundle.loadString(asset);
@@ -47,9 +67,13 @@ class Languages{
 
       // Work - projects I like
       otherProjects = "Des projets que j'aime";
-      otherProjectsText = await loadAsset('texts/random_face_fr.txt');
-    }
-    if (language == "En"){
+      RandomFaceText = await loadAsset('texts/random_face_fr.txt');
+      AppPainterText = await loadAsset('texts/app_painter_fr.txt');
+
+      // Bottom
+      sendEmail = "envoyer un courriel ";
+      height = 100;
+    }else if (language == "En"){
       // App Bar
       work = "Work";
       about = "About";
@@ -64,7 +88,12 @@ class Languages{
 
       // Work - projects I like
       otherProjects = "Projects I like";
-      otherProjectsText = await loadAsset('texts/random_face_en.txt');
+      RandomFaceText = await loadAsset('texts/random_face_en.txt');
+      AppPainterText = await loadAsset('texts/app_painter_en.txt');
+
+      // Bottom
+      sendEmail = "send email ";
+      height = 200;
     }
   }
 }

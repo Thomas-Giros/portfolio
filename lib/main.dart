@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Screens/Home/homeScreen.dart';
 import 'package:portfolio/constants.dart';
-import 'package:portfolio/languages/Languages.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
 
   // This widget is the root of your application.
   @override
@@ -20,7 +18,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      home: HomeScreen(page: "work",),
     );
   }
 }

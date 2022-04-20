@@ -6,8 +6,8 @@ import 'package:portfolio/colors/AppColors.dart';
 import 'package:video_player/video_player.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class WorkLayout extends StatelessWidget {
-  const WorkLayout({Key? key}) : super(key: key);
+class AboutLayout extends StatelessWidget {
+  const AboutLayout({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,34 +22,18 @@ class ElementOfBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TitleOfElementOfBody(title: Languages.presentation,),
+        TitleOfElementOfBody(title: "Ma vie mon oeuvre",),
         PresentationElementOfBody(presentationText: Languages.presentationText,),
-        TitleOfElementOfBody(title: Languages.myProjects,),
-        ProjectsElementOfBody(
+        //TitleOfElementOfBody(title: Languages.myProjects,),
+/*        ProjectsElementOfBody(
           title: "Spim",
           text: Languages.spimText,
           sourceLink: 'https://play.google.com/store/apps/details?id=com.tgiros.spim',
           sourceDescription: "Google Play",
           mediaLocation: 'videos/spim_demo.mp4',
           media: "video",
-        ),
-        TitleOfElementOfBody(title: Languages.otherProjects,),
-        ProjectsElementOfBody(
-          title: "The Random Face Generator",
-          text: Languages.RandomFaceText,
-          sourceLink: "https://adityar224.github.io/Random-Face-Generator/#/",
-          sourceDescription: "Source",
-          mediaLocation: "assets/images/random_face.png",
-          media: "image",
-        ),
-        ProjectsElementOfBody(
-          title: "AppPainter",
-          text: Languages.AppPainterText,
-          sourceLink: "https://appainter.dev/#/",
-          sourceDescription: "Source",
-          mediaLocation: "assets/images/app_painter.png",
-          media: "image",
-        ),
+        ),*/
+
         SizedBox(height: 110),
       ],
     );
@@ -58,7 +42,7 @@ class ElementOfBody extends StatelessWidget {
 
 
 class TitleOfElementOfBody extends StatelessWidget {
-   const TitleOfElementOfBody({
+  const TitleOfElementOfBody({
     required  this.title,
     Key? key
   }) : super(key: key);
@@ -90,31 +74,31 @@ class PresentationElementOfBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.fromLTRB(20,0,20,10),
-        decoration: BoxDecoration(
-          color: AppColors.prim.withOpacity(wideOpacity),
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-                offset: Offset(0,-2),
-                blurRadius: 30,
-                color: Colors.black.withOpacity(0.16)
+      margin: EdgeInsets.fromLTRB(20,0,20,10),
+      decoration: BoxDecoration(
+        color: AppColors.prim.withOpacity(wideOpacity),
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+              offset: Offset(0,-2),
+              blurRadius: 30,
+              color: Colors.black.withOpacity(0.16)
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Flexible(
+              child: Text(
+                presentationText,
+                style: AllTextStyles.TextTextStyle(),
+              ),
             ),
           ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Flexible(
-                child: Text(
-                  presentationText,
-                  style: AllTextStyles.TextTextStyle(),
-                ),
-              ),
-            ],
-          ),
       ),
     );
   }
@@ -254,9 +238,9 @@ class _ProjectsElementOfBodyState extends State<ProjectsElementOfBody> {
         ),
       );
     } else
-      {
-        return Container();
-      }
+    {
+      return Container();
+    }
   }
 
   setDefaultSizeValues() {
@@ -300,10 +284,10 @@ class _ProjectsElementOfBodyState extends State<ProjectsElementOfBody> {
     {
       setState(() {
         if (media == "video")
-          {
-            _controller.setLooping(true);
-            _controller.play();
-          }
+        {
+          _controller.setLooping(true);
+          _controller.play();
+        }
         _text = widget.text;
         _borderRadiusTop = BorderRadius.only(
             topLeft: const Radius.circular(20.0),
@@ -331,10 +315,10 @@ class _ProjectsElementOfBodyState extends State<ProjectsElementOfBody> {
       setState(() {
         if (_text != widget.title)
         {
-            _borderRadiusTop = BorderRadius.only(
-                topLeft: const Radius.circular(20.0),
-                topRight: const Radius.circular(20.0));
-            setTextAndColor(widget.text,Colors.white.withOpacity(0.5));
+          _borderRadiusTop = BorderRadius.only(
+              topLeft: const Radius.circular(20.0),
+              topRight: const Radius.circular(20.0));
+          setTextAndColor(widget.text,Colors.white.withOpacity(0.5));
         }
       });
 
